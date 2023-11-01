@@ -5,14 +5,13 @@ public class DeleteCommand implements Command{
 
     Boolean ifLineNo;
 
-    public DeleteCommand(int lineNo, String str, Boolean ifLineNo) {
+    public DeleteCommand(int lineNo, String str) {
         this.lineNo = lineNo;
         this.str = str;
-        this.ifLineNo = ifLineNo;
     }
 
     @Override
     public void execute() {
-        TextEditor.delete(lineNo,str,ifLineNo);
+        TextEditor.delete(lineNo,str);
     }
 }

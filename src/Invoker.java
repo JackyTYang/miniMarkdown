@@ -15,12 +15,20 @@ public class Invoker {
         }
         if(Parser.returnCategory(c).equals("save")){
             MyLogger.closeFile();
+        }//日志记录
+
+        if(c.equals("undo")){
+            undo();
         }
-        String normalizedCommand = Parser.normalizedCommand(c);
-        commands.add(normalizedCommand);
-        historyIndex++;
-        Command commandImpl = Parser.getCommand(c);
-        commandImpl.execute();
+        else if(c.equals("redo")){
+            redo();
+        }
+        else{
+            String normalizedCommand = Parser.normalizedCommand(c);
+            commands.add(++historyIndex,normalizedCommand);
+            Command commandImpl = Parser.getCommand(normalizedCommand);
+            commandImpl.execute();
+        }
     };
 
     public static void undo(){
