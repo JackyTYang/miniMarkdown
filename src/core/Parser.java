@@ -1,3 +1,8 @@
+package core;
+
+import command.*;
+import command.impl.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +49,7 @@ public class Parser {
         return Arrays.asList(elements);//每一种方法，将三个存入list中。第一个参数为方法，第二个为。。以此类推
     }
 
-    public static String normalizedCommand(String command,TextEditor textEditor){
+    public static String normalizedCommand(String command, TextEditor textEditor){
         List<String> args=parser(command);
 
         switch (args.get(0)) {
@@ -74,7 +79,7 @@ public class Parser {
         return combineArgs(args.toArray(new String[0]));//append和insert等都变成insert lineNo content的形式，delete lineNo和delete content都变成delete lineNo content的形式,需要调用textEditor获取相关文本
     }
 
-    public static String reverseCommand(String command,TextEditor textEditor){
+    public static String reverseCommand(String command, TextEditor textEditor){
         List<String> args=parser(normalizedCommand(command,textEditor));
         if(args.get(0).equals("insert"))args.set(0,"delete");
         else if(args.get(0).equals("delete"))args.set(0,"insert");

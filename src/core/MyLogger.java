@@ -1,3 +1,5 @@
+package core;
+
 public class MyLogger {
 
     public static int fileID;

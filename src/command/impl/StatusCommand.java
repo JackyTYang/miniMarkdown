@@ -1,4 +1,9 @@
-public class StatusCommand implements Command{
+package command.impl;
+
+import command.Command;
+import core.MyLogger;
+
+public class StatusCommand implements Command {
     String parameter;
 
     public StatusCommand(String parameter) {

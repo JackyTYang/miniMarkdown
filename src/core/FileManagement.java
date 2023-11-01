@@ -1,12 +1,17 @@
+package core;
+
 import java.io.*;
 import java.util.*;
 
 public class FileManagement {
 
-    private static ArrayList<String> lines = new ArrayList<>();
-    private static String filePath;
+    //内存中的文件以列表存储
+    public static List<String> lines;
+    //当前文件路径
+    public static String filePath;
 
     public static void loadFile(String dir) {
+        lines = new ArrayList<>();
         if (filePath.isEmpty() || !filePath.equals(dir)) filePath = dir;
         try {
             File file = new File(filePath);
@@ -33,14 +38,6 @@ public class FileManagement {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static ArrayList<String> getLines() {
-        return new ArrayList<>(lines);
-    }
-
-    public static String getFilePath() {
-        return filePath;
     }
 
 }
