@@ -1,8 +1,10 @@
 import java.awt.desktop.SystemEventListener;
+import java.util.ArrayList;
 
 public class TextEditor {
     public int getIndex(String name){
-        return 0;
+        ArrayList<String> lines = FileManagement.getLines();
+        return lines.indexOf(name);
     }
     public int getLayer(int index) {
         return 0;
