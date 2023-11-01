@@ -1,6 +1,15 @@
 import java.awt.desktop.SystemEventListener;
 
 public class TextEditor {
+    public int getIndex(String name){
+        return 0;
+    }
+    public int getLayer(int index) {
+        return 0;
+    }
+    public String getName(int index){
+        return "";
+    }
     public static void insert(int lineNo, String str){
 
     }
