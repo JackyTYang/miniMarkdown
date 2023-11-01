@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Parser {
     private static String combineArgs(String[] args){
@@ -45,7 +46,6 @@ public class Parser {
 
     public static String normalizedCommand(String command,TextEditor textEditor){
         List<String> args=parser(command);
-        String[] newArgs=new String[4];
 
         switch (args.get(0)) {
             case "append-head" -> {
@@ -68,12 +68,10 @@ public class Parser {
                 args.add("#".repeat(textEditor.getLayer(lineNumber)));//repeat "#"
                 args.add(textEditor.getName(lineNumber));//give index get name
             }
-            default -> {
-                return command;
-            }
+            default -> {}
         }
 
-        return combineArgs(newArgs);//append和insert等都变成insert lineNo content的形式，delete lineNo和delete content都变成delete lineNo content的形式,需要调用textEditor获取相关文本
+        return combineArgs(args.toArray(new String[0]));//append和insert等都变成insert lineNo content的形式，delete lineNo和delete content都变成delete lineNo content的形式,需要调用textEditor获取相关文本
     }
 
     public static String reverseCommand(String command,TextEditor textEditor){
