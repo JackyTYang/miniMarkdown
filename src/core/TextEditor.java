@@ -50,9 +50,20 @@ public class TextEditor {
 
         return split[split.length-1];
     }
+
+    /**
+     * append-tail传入lineNo = -1
+     * @param lineNo
+     * @param str
+     */
     public static void insert(int lineNo, String str){
         List<String> lines = FileManagement.lines;
-        lines.add(lineNo,str);
+        if (lineNo == -1 || lineNo > (FileManagement.lines.size() - 1)){
+            lines.add(str);
+        }else {
+            lines.add(lineNo,str);
+        }
+
     }
 
     public static void delete(int lineNo, String str){
