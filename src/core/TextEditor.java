@@ -1,7 +1,5 @@
 package core;
 
-import core.FileManagement;
-
 import java.util.List;
 
 /**
@@ -99,7 +97,9 @@ public class TextEditor {
         }
     }
 
-    public static void listTree(String dirName){
-        System.out.println("listTree");
+    public static void listTree(){
+        List<String> lines = FileManagement.lines;
+        for (int i = 0; i < lines.size(); ++i)
+            System.out.println(lines.get(i));
     }
 }

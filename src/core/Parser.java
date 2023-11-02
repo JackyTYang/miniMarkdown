@@ -33,7 +33,7 @@ public class Parser {
             return new ListCommand();
         }
         else if(elements.get(0).equals("listTree")){
-            return new TreeCommand(elements.get(1));
+            return new TreeCommand();
         }
         else if(elements.get(0).equals("history")){
             return new HistoryCommand(Integer.parseInt(elements.get(1)));
