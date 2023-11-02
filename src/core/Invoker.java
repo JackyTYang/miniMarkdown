@@ -1,3 +1,7 @@
+package core;
+
+import command.Command;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +16,13 @@ public class Invoker {
         MyLogger.recordCommand(c);
         if(Parser.returnCategory(c).equals("load")){
             MyLogger.openNewFile(Parser.parser(c).get(1),++fileID);
+            // TODO load的时候不开启session，只记录文件打开时间
+
+
         }
         if(Parser.returnCategory(c).equals("save")){
-            MyLogger.closeFile();
+            MyLogger.closeFile(Parser.parser(c).get(1));
+            // TODO save的时候记录文件关闭时间
         }//日志记录
 
         if(c.equals("undo")){

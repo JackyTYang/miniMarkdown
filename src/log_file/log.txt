@@ -1,0 +1,37 @@
+2023-11-01 22:02:47 - Command 1 executed
+2023-11-01 22:02:47 - Command 2 executed
+2023-11-01 22:02:47 - Command 3 executed
+2023-11-01 22:02:51 - Command 4 executed
+2023-11-01 22:02:51 - Command 5 executed
+2023-11-01 22:03:56 - Command 1 executed
+2023-11-01 22:03:56 - Command 2 executed
+2023-11-01 22:03:56 - Command 3 executed
+2023-11-01 22:04:00 - Command 4 executed
+2023-11-01 22:04:00 - Command 5 executed
+2023-11-01 22:06:35 - Command 1 executed
+2023-11-01 22:06:35 - Command 2 executed
+2023-11-01 22:06:35 - Command 3 executed
+2023-11-01 22:06:39 - Command 4 executed
+2023-11-01 22:06:39 - Command 5 executed
+2023-11-01 22:09:25 - session start :2023-11-01 22:09:25
+2023-11-01 22:09:25 - Command 1 executed
+2023-11-01 22:09:25 - Command 2 executed
+2023-11-01 22:09:25 - Command 3 executed
+2023-11-01 22:09:29 - Command 4 executed
+2023-11-01 22:09:29 - Command 5 executed
+2023-11-01 22:12:52 - session start :2023-11-01 22:12:52
+2023-11-01 22:12:52 - Command 1 executed
+2023-11-01 22:12:53 - Command 2 executed
+2023-11-01 22:12:54 - Command 3 executed
+2023-11-01 22:12:55 - Opened File1 with ID 101
+2023-11-01 22:12:58 - Closed File1 with ID 101
+2023-11-01 22:12:59 - Opened File2 with ID 102
+2023-11-01 22:13:01 - Closed File2 with ID 102
+2023-11-01 22:13:15 - session start :2023-11-01 22:13:15
+2023-11-01 22:13:15 - Command 1 executed
+2023-11-01 22:13:16 - Command 2 executed
+2023-11-01 22:13:17 - Command 3 executed
+2023-11-01 22:13:18 - Opened File1 with ID 101
+2023-11-01 22:13:21 - Closed File1 with ID 101
+2023-11-01 22:13:22 - Opened File2 with ID 102
+2023-11-01 22:13:24 - Closed File2 with ID 102
