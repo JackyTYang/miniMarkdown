@@ -1,4 +1,9 @@
-public class LoadCommand implements Command{
+package command.impl;
+
+import command.Command;
+import core.FileManagement;
+
+public class LoadCommand implements Command {
 
     String directory;
 

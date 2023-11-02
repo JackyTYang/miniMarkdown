@@ -1,4 +1,8 @@
-import java.util.ArrayList;
+package core;
+
+import command.*;
+import command.impl.*;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,41 +47,42 @@ public class Parser {
         return Arrays.asList(elements);//每一种方法，将三个存入list中。第一个参数为方法，第二个为。。以此类推
     }
 
-    public static String normalizedCommand(String command,TextEditor textEditor){
+    public static String normalizedCommand(String command){
         List<String> args=parser(command);
         String[] newArgs=new String[4];
 
         switch (args.get(0)) {
-            case "append-head" -> {
-                args.set(0,"insert");
-                args.add(1,"0");
-            }
-            case "append-tail", "insert" -> {
-                args.set(0,"insert");
-                args.add(1,"-1");
-            }
-            case "delete" -> {
-                int lineNumber;
-                try {
-                    lineNumber = Integer.parseInt(args.get(1));
-                } catch (NumberFormatException e) {
-                    lineNumber = textEditor.getIndex(args.get(1));//give name get index
-                }
-                args.set(0,"delete");
-                args.set(1,String.valueOf(lineNumber));
-                args.add("#".repeat(textEditor.getLayer(lineNumber)));//repeat "#"
-                args.add(textEditor.getName(lineNumber));//give index get name
-            }
-            default -> {
-                return command;
-            }
+//            case "append-head" -> {
+//                args.set(0,"insert");
+//                args.add(1,"0");
+//            }
+//            case "append-tail", "insert" -> {
+//                args.set(0,"insert");
+//                args.add(1,"-1");
+//            }
+//            case "delete" -> {
+//                int lineNumber;
+//                try {
+//                    lineNumber = Integer.parseInt(args.get(1));
+//                } catch (NumberFormatException e) {
+//                    lineNumber = TextEditor.getIndex(args.get(1));//give name get index
+//                }
+//                args.set(0,"delete");
+//                args.set(1,String.valueOf(lineNumber));
+////                args.add("#".repeat(TextEditor.getLayer(lineNumber)));//repeat "#"
+//                args.add(TextEditor.getName(lineNumber));//give index get name
+//
+//            }
+//            default -> {
+//                return command;
+//            }
         }
 
         return combineArgs(newArgs);//append和insert等都变成insert lineNo content的形式，delete lineNo和delete content都变成delete lineNo content的形式,需要调用textEditor获取相关文本
     }
 
-    public static String reverseCommand(String command,TextEditor textEditor){
-        List<String> args=parser(normalizedCommand(command,textEditor));
+    public static String reverseCommand(String command){
+        List<String> args=parser(normalizedCommand(command));
         if(args.get(0).equals("insert"))args.set(0,"delete");
         else if(args.get(0).equals("delete"))args.set(0,"insert");
         return combineArgs(args.toArray(new String[0]));//insert lineNo abc -> delete lineNo,delete lineNo content -> insert lineNo content

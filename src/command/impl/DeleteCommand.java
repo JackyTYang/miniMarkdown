@@ -1,4 +1,9 @@
-public class DeleteCommand implements Command{
+package command.impl;
+
+import command.Command;
+import core.TextEditor;
+
+public class DeleteCommand implements Command {
     int lineNo;
 
     String str;
