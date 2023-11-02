@@ -1,6 +1,5 @@
-insert # title1
-list
-insert 1 # title2
+load test.md
+insert 0 # title2
 list
 insert 1 ## title1.1
 list

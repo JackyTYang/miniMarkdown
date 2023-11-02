@@ -12,7 +12,7 @@ public class FileManagement {
 
     public static void loadFile(String dir) {
         lines = new ArrayList<>();
-        if (filePath.isEmpty() || !filePath.equals(dir)) filePath = dir;
+        if (filePath == null || !filePath.equals(dir)) filePath = dir;
         try {
             File file = new File(filePath);
             BufferedReader reader = new BufferedReader(new FileReader(file));
