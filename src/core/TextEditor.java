@@ -14,7 +14,7 @@ public class TextEditor {
      * @param name
      * @return
      */
-    public int getIndex(String name){
+    public static int getIndex(String name){
         List<String> lines = FileManagement.lines;
         for (int i = 0; i < lines.size(); i++) {
             if (lines.get(i).contains(name)) {
@@ -30,7 +30,7 @@ public class TextEditor {
      * @param index
      * @return
      */
-    public int getLayer(int index) {
+    public static int getLayer(int index) {
         List<String> lines = FileManagement.lines;
 
         String line = lines.get(index);
@@ -43,7 +43,7 @@ public class TextEditor {
      * @param index
      * @return
      */
-    public String getName(int index){
+    public static String getName(int index){
         List<String> lines = FileManagement.lines;
         String line = lines.get(index);
         String[] split = line.split(" ");
