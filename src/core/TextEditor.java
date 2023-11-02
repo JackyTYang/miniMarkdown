@@ -8,6 +8,21 @@ import java.util.List;
  * 所有操作都默认是0基址的
  */
 public class TextEditor {
+
+    /**
+     * 静态内部类单例模式 实现
+     * 调用方法TextEditor.getInstance()
+     */
+    private static class TextEditorHolder{
+        private static final TextEditor INSTANCE = new TextEditor();
+    }
+
+    private TextEditor(){}
+
+    public static TextEditor getInstance(){
+        return TextEditorHolder.INSTANCE;
+    }
+
     /**
      * 返回传入的文本内容对应的第一个行号
      * 传入的是不带# - + * 的文本内容
