@@ -44,6 +44,9 @@ public class FileManagement {
                 writer.newLine();
             }
             writer.close();
+
+            filePath = null;
+            lines = null;
         } catch (Exception e) {
             e.printStackTrace();
         }

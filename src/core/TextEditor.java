@@ -44,11 +44,11 @@ public class TextEditor {
      * @return
      */
     public static int getLayer(int index) {
-        List<String> lines = FileManagement.lines;
+            List<String> lines = FileManagement.lines;
 
-        String line = lines.get(index);
-        int count = line.length() - line.replace("#", "").length();
-        return count;
+            String line = lines.get(index);
+            int count = line.length() - line.replace("#", "").length();
+            return count;
     }
 
     /**
@@ -84,7 +84,6 @@ public class TextEditor {
             List<String> lines = FileManagement.lines;
             lines.remove(lineNo);
         } else {
-            System.out.println("不合法的行号");
             throw new IllegalArgumentException("不合法的行号");
         }
 
