@@ -67,8 +67,13 @@ public class TextEditor {
     }
 
     public static void delete(int lineNo, String str){
-        List<String> lines = FileManagement.lines;
-        lines.remove(lineNo);
+        if ( lineNo >=0 && lineNo < FileManagement.lines.size() ){
+            List<String> lines = FileManagement.lines;
+            lines.remove(lineNo);
+        } else {
+            throw new IllegalArgumentException("不合法的行号");
+        }
+
     }
 
 
