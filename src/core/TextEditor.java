@@ -86,6 +86,7 @@ public class TextEditor {
             List<String> lines = FileManagement.lines;
             lines.remove(lineNo);
         } else {
+            System.out.println("不合法的行号");
             throw new IllegalArgumentException("不合法的行号");
         }
 
