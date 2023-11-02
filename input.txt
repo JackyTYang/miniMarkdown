@@ -1,0 +1,27 @@
+load test.md
+insert 0 # title2
+list
+insert 1 ## title1.1
+list
+append-tail ## title2.2
+list
+insert 10 ### title3
+list
+append-head # title
+list
+insert 2 * text1
+list
+delete title2.2
+list
+delete 1
+list
+undo
+list
+undo
+list
+redo
+list
+insert 6 * text2
+list
+undo
+list
