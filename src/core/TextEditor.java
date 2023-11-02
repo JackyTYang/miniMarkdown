@@ -8,13 +8,28 @@ import java.util.List;
  * 所有操作都默认是0基址的
  */
 public class TextEditor {
+
+    /**
+     * 静态内部类单例模式 实现
+     * 调用方法TextEditor.getInstance()
+     */
+    private static class TextEditorHolder{
+        private static final TextEditor INSTANCE = new TextEditor();
+    }
+
+    private TextEditor(){}
+
+    public static TextEditor getInstance(){
+        return TextEditorHolder.INSTANCE;
+    }
+
     /**
      * 返回传入的文本内容对应的第一个行号
      * 传入的是不带# - + * 的文本内容
      * @param name
      * @return
      */
-    public int getIndex(String name){
+    public static int getIndex(String name){
         List<String> lines = FileManagement.lines;
         for (int i = 0; i < lines.size(); i++) {
             if (lines.get(i).contains(name)) {
@@ -30,7 +45,7 @@ public class TextEditor {
      * @param index
      * @return
      */
-    public int getLayer(int index) {
+    public static int getLayer(int index) {
         List<String> lines = FileManagement.lines;
 
         String line = lines.get(index);
@@ -43,7 +58,7 @@ public class TextEditor {
      * @param index
      * @return
      */
-    public String getName(int index){
+    public static String getName(int index){
         List<String> lines = FileManagement.lines;
         String line = lines.get(index);
         String[] split = line.split(" ");

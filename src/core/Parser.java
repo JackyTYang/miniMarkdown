@@ -46,18 +46,30 @@ public class Parser {
 
     public static List<String> parser(String command){
         String[] elements = command.split(" ");
-        return Arrays.asList(elements);//每一种方法，将三个存入list中。第一个参数为方法，第二个为。。以此类推
+
+        List<String> elements2 = new ArrayList<>();
+        for (int i = 0; i < elements.length; ++i){
+            if (elements[i].charAt(0) == '#' || elements[i].charAt(0) == '*' && i < elements.length - 1){
+                elements2.add(elements[i] + " " + elements[i + 1]);
+                break;
+            }else
+                elements2.add(elements[i]);
+        }
+
+        return elements2;//每一种方法，将三个存入list中。第一个参数为方法，第二个为。。以此类推
     }
 
     public static String normalizedCommand(String command, TextEditor textEditor){
         List<String> args=parser(command);
 
+
+//        System.out.println("args="+args);
         switch (args.get(0)) {
             case "append-head" -> {
                 args.set(0,"insert");
                 args.add(1,"0");
             }
-            case "append-tail", "insert" -> {
+            case "append-tail"-> {
                 args.set(0,"insert");
                 args.add(1,"-1");
             }

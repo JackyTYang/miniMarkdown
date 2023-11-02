@@ -1,8 +1,6 @@
 package core;
 
 import java.io.*;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class FileManagement {
@@ -14,16 +12,9 @@ public class FileManagement {
 
     public static void loadFile(String dir) {
         lines = new ArrayList<>();
-        if (dir == null || dir.isEmpty() || !isValidPath(dir)) {
-            throw new IllegalArgumentException("不合法的文件路径");
-        }
-        if (filePath == null || filePath.isEmpty() || !filePath.equals(dir)) filePath = dir;
+        if (filePath == null || !filePath.equals(dir)) filePath = dir;
         try {
             File file = new File(filePath);
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -47,15 +38,6 @@ public class FileManagement {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private static boolean isValidPath(String path) {
-        try {
-            Paths.get(path);
-        } catch (InvalidPathException | NullPointerException ex) {
-            return false;
-        }
-        return true;
     }
 
 }
