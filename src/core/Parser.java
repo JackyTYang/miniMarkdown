@@ -6,7 +6,6 @@ import command.impl.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class Parser {
     public static List<String> parse(String command){
@@ -55,6 +54,7 @@ public class Parser {
             case "listTree" -> new TreeCommand();
             case "history" -> new HistoryCommand(Integer.parseInt(args.get(1)));
             case "stats" -> new StatsCommand(args.get(1));
+            case "dirTree"-> new DirCommand(args.get(1));
             default -> null;
         };
     }

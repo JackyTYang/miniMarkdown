@@ -30,3 +30,4 @@ insert 6 * text2
 list
 undo
 list
+dirTree D:/fdu
