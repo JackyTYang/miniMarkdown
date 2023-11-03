@@ -1,59 +1,39 @@
 package core;
 
-import command.Command;
-
 import java.util.ArrayList;
 import java.util.List;
+import command.Command;
 
 public class Invoker {
-    public static List<String> commands = new ArrayList<>();
+    public static List<List<String>> commands = new ArrayList<>();
     public static int historyIndex = -1;
-
-    public static List<String> fileName = new ArrayList<>();
     public static int fileID = 0;
 
     public static void invoke(String c){
         MyLogger.recordCommand(c);
-        if(Parser.returnCategory(c).equals("load")){
-            MyLogger.openNewFile(Parser.parser(c).get(1),++fileID);
-            // TODO load的时候不开启session，只记录文件打开时间
-
-
+        List<String> args=Parser.parse(c);
+        switch (args.get(0)){
+            case "load"-> MyLogger.openNewFile(args.get(1),++fileID);
+            case "save"->MyLogger.closeFile();
+            case "undo"->{undo();return;}
+            case "redo"->{redo();return;}
+            case "insert","delete"-> commands.add(++historyIndex,args);
         }
-        if(Parser.returnCategory(c).equals("save")){
-            MyLogger.closeFile(Parser.parser(c).get(1));
-            // TODO save的时候记录文件关闭时间
-        }//日志记录
-
-        if(c.equals("undo")){
-            undo();
-        }
-        else if(c.equals("redo")){
-            redo();
-        }
-        else{
-            String normalizedCommand = Parser.normalizedCommand(c);
-            commands.add(++historyIndex,normalizedCommand);
-            Command commandImpl = Parser.getCommand(normalizedCommand);
-            commandImpl.execute();
-        }
-    };
+        Parser.getCommand(args).execute();
+    }
 
     public static void undo(){
-        if(historyIndex!=-1){
-            String commandLine = commands.get(historyIndex);
-            if(Parser.returnCategory(commandLine).equals("insert") || Parser.returnCategory(commandLine).equals("delete")){
-                Command command = Parser.getCommand(Parser.reverseCommand(commandLine));
-                command.execute();
-                historyIndex--;
-            }
+        if(historyIndex!=-1) {
+            Command command = Parser.getCommand(Parser.reverseCommand(commands.get(historyIndex)));
+            command.execute();
+            historyIndex--;
         }
     }
 
     public static void redo(){
-        if(historyIndex<commands.size()-1){//说明上一条执行了undo
+        if(historyIndex<commands.size()-1){
             historyIndex++;
-            Command command = Parser.getCommand(commands.get(historyIndex));
+            Command command = Parser.getCommand(Parser.reverseCommand(commands.get(historyIndex)));
             command.execute();
         }
     }
