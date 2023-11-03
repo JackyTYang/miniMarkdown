@@ -3,10 +3,10 @@ package command.impl;
 import command.Command;
 import core.MyLogger;
 
-public class StatusCommand implements Command {
+public class StatsCommand implements Command {
     String parameter;
 
-    public StatusCommand(String parameter) {
+    public StatsCommand(String parameter) {
         this.parameter = parameter;
     }
 
