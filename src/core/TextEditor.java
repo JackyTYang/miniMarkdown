@@ -70,8 +70,6 @@ public class TextEditor {
 
     /**
      * append-tail传入lineNo = -1
-     * @param lineNo
-     * @param str
      */
     public static void insert(int lineNo, String str){
         List<String> lines = FileManagement.lines;
@@ -83,15 +81,11 @@ public class TextEditor {
 
     }
 
-    public static void delete(int lineNo, String str){
-        if ( lineNo >=0 && lineNo < FileManagement.lines.size() ){
-            List<String> lines = FileManagement.lines;
-            lines.remove(lineNo);
-        } else {
-            System.out.println("不合法的行号");
-            throw new IllegalArgumentException("不合法的行号");
-        }
-
+    public static void delete(int lineNo) {
+        int n = FileManagement.lines.size();
+        if (lineNo == -1 || lineNo >= n) lineNo = n - 1;
+        List<String> lines = FileManagement.lines;
+        lines.remove(lineNo);
     }
 
 
@@ -107,7 +101,7 @@ public class TextEditor {
         System.out.println("listTree");
         List<String> lines = FileManagement.lines;
         List<String> nodes = new ArrayList<>();
-        List<Integer> depth = new ArrayList();
+        List<Integer> depth = new ArrayList<>();
 
         int pre_depth = 0;
         for (String s : lines) {
