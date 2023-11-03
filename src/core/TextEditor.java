@@ -1,6 +1,8 @@
 package core;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 所有操作都默认是0基址的
@@ -98,8 +100,42 @@ public class TextEditor {
     }
 
     public static void listTree(){
+        System.out.println("listTree");
         List<String> lines = FileManagement.lines;
-        for (int i = 0; i < lines.size(); ++i)
-            System.out.println(lines.get(i));
+        List<String> nodes = new ArrayList<>();
+        List<Integer> depth = new ArrayList();
+
+        int pre_depth = 0;
+        for (String s : lines) {
+            if (s.startsWith("#")) {
+                int count = 0;
+                while (s.charAt(count) == '#'){
+                    count++;
+                }
+                pre_depth = count;
+                nodes.add((s.split(" "))[1]);
+                depth.add(count);
+            } else {
+                if (s.startsWith("*")){
+                    nodes.add("." + s.split(" ")[1]);
+                }else
+                    nodes.add(s);
+                depth.add(pre_depth);
+            }
+        }
+
+        for (int i = 0; i < lines.size(); ++i){
+            for (int j = 1; j < depth.get(i); ++j) System.out.print("    ");
+            if (i == lines.size() - 1){
+                System.out.print("\u2514\u2500\u2500 ");//"└── "
+            }else{
+                if (Objects.equals(depth.get(i), depth.get(i + 1))){
+                    System.out.print("\u251C\u2500\u2500 ");//"├── "
+                }else{
+                    System.out.print("\u2514\u2500\u2500 ");//"└── "
+                }
+            }
+            System.out.println(nodes.get(i));
+        }
     }
 }
