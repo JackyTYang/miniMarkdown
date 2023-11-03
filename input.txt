@@ -1,7 +1,7 @@
 load test.md
-insert 0 # title2
+insert 1 # title2
 list
-insert 1 ## title2.1
+insert 2 ## title2.1
 list
 append-tail ## title2.2
 list
@@ -9,13 +9,15 @@ insert 10 ### title2.2.1
 list
 append-head # title1
 list
-insert 5 * text1
+insert 6 * text1
 list
 append-head # title0
 list
 delete title2.1
 list
-delete 0
+delete 1
+list
+append-tail # title3
 list
 listTree
 undo

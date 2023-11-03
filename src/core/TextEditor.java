@@ -96,9 +96,11 @@ public class TextEditor {
 
 
     public static void list(){
+        System.out.println();
         for (String line : FileManagement.lines) {
             System.out.println(line);
         }
+        System.out.println();
     }
 
     public static void listTree(){

@@ -27,7 +27,7 @@ public class Invoker {
             redo();
         }
         else{
-            String normalizedCommand = Parser.normalizedCommand(c, TextEditor.getInstance());
+            String normalizedCommand = Parser.normalizedCommand(c);
             commands.add(++historyIndex,normalizedCommand);
             Command commandImpl = Parser.getCommand(normalizedCommand);
             commandImpl.execute();
@@ -38,7 +38,7 @@ public class Invoker {
         if(historyIndex!=-1){
             String commandLine = commands.get(historyIndex);
             if(Parser.returnCategory(commandLine).equals("insert") || Parser.returnCategory(commandLine).equals("delete")){
-                Command command = Parser.getCommand(Parser.reverseCommand(commandLine, TextEditor.getInstance()));
+                Command command = Parser.getCommand(Parser.reverseCommand(commandLine));
                 command.execute();
                 historyIndex--;
             }
