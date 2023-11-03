@@ -35,6 +35,9 @@ public class Parser {
         else if(elements.get(0).equals("listTree")){
             return new TreeCommand();
         }
+        else if(elements.get(0).equals("dirTree")){
+            return new DirCommand(elements.get(1));
+        }
         else if(elements.get(0).equals("history")){
             return new HistoryCommand(Integer.parseInt(elements.get(1)));
         }
