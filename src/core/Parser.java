@@ -16,7 +16,7 @@ public class Parser {
         return command.toString();
     }
     public static Command getCommand(String command){//将command转化为一个CommandImpl对象返回给invoke
-        List<String> elements = parser(command);
+        List<String> elements = parse(command);
         return switch (elements.get(0)) {
             case "load" -> new LoadCommand(elements.get(1));
             case "save" -> new SaveCommand();
@@ -25,12 +25,12 @@ public class Parser {
             case "list" -> new ListCommand();
             case "listTree" -> new TreeCommand();
             case "history" -> new HistoryCommand(Integer.parseInt(elements.get(1)));
-            case "status" -> new StatusCommand(elements.get(1));
+            case "stats" -> new StatsCommand(elements.get(1));
             default -> null;
         };
     }
 
-    public static List<String> parser(String command){
+    public static List<String> parse(String command){
         String[] elements = command.split(" ");
 
         List<String> elements2 = new ArrayList<>();
@@ -46,7 +46,7 @@ public class Parser {
     }
 
     public static String normalizedCommand(String command){
-        List<String> args=parser(command);
+        List<String> args=parse(command);
 
         switch (args.get(0)) {
             case "append-head" -> {
@@ -76,13 +76,13 @@ public class Parser {
     }
 
     public static String reverseCommand(String command){
-        List<String> args=parser(normalizedCommand(command));
+        List<String> args=parse(normalizedCommand(command));
         if(args.get(0).equals("insert"))args.set(0,"delete");
         else if(args.get(0).equals("delete"))args.set(0,"insert");
         return combineArgs(args.toArray(new String[0]));//insert lineNo abc -> delete lineNo,delete lineNo content -> insert lineNo content
     }
 
     public static String returnCategory(String command){
-        return parser(command).get(0);
+        return parse(command).get(0);
     }
 }

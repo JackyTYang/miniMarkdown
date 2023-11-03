@@ -14,7 +14,7 @@ public class Invoker {
     public static void invoke(String c){
         MyLogger.recordCommand(c);
         if(Parser.returnCategory(c).equals("load")){
-            MyLogger.openNewFile(Parser.parser(c).get(1),++fileID);
+            MyLogger.openNewFile(Parser.parse(c).get(1),++fileID);
         }
         if(Parser.returnCategory(c).equals("save")){
             MyLogger.closeFile();
