@@ -28,3 +28,4 @@ insert 6 * text2
 list
 undo
 list
+dirTree F:\学习\大二小学期

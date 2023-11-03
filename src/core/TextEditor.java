@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import java.io.File;
+
 /**
  * 所有操作都默认是0基址的
  */
@@ -138,4 +140,38 @@ public class TextEditor {
             System.out.println(nodes.get(i));
         }
     }
+
+    public static void dirTree(String dir){
+        String rootPath = dir; // 设置根目录路径
+        File rootDirectory = new File(rootPath);
+
+        if (rootDirectory.exists() && rootDirectory.isDirectory()) {
+            System.out.println(rootDirectory.getName());
+            printDirectoryTree(rootDirectory, "");
+        } else {
+            System.out.println("Root directory does not exist.");
+        }
+    }
+
+    //被dirTree调用的工具函数（递归
+    public static void printDirectoryTree(File directory, String prefix) {
+        File[] files = directory.listFiles();
+        if (files != null) {
+            for (int i = 0; i < files.length; i++) {
+                File file = files[i];
+                String treePrefix = (i == files.length - 1) ? "\u2514\u2500\u2500 " : "\u251C\u2500\u2500 ";
+
+                System.out.println(prefix + treePrefix + file.getName());
+
+                if (file.isDirectory()) {
+                    String newPrefix = prefix + (i == files.length - 1 ? "    " : "\u2502   ");
+                    printDirectoryTree(file, newPrefix);
+                }
+            }
+        }
+    }
+
+
+
+
 }

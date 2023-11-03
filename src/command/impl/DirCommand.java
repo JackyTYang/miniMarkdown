@@ -1,6 +1,7 @@
 package command.impl;
 
 import command.Command;
+import core.TextEditor;
 
 /**
  * @Author: lmy
@@ -15,6 +16,6 @@ public class DirCommand implements Command {
     }
     @Override
     public void execute() {
-
+        TextEditor.dirTree(dir);
     }
 }
