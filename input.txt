@@ -1,5 +1,5 @@
 load test.md
-insert 1 # title2
+insert # title2
 list
 insert 2 ## title2.1
 list
@@ -30,4 +30,3 @@ insert 6 * text2
 list
 undo
 list
-dirTree F:\学习\大二小学期
