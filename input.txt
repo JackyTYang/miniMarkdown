@@ -30,4 +30,22 @@ insert 6 * text2
 list
 undo
 list
-dirTree D:/fdu
+history
+history 5
+stats current
+save
+load test2.md
+append-tail # title2
+insert 1 ## title0.3
+insert 1 # title0
+insert 2 ## title0.1
+insert 3 ### title0.1.1
+insert 3 * text1
+insert 5 * text2
+stats current
+list
+listTree
+save
+history 3
+stats all
+exit
