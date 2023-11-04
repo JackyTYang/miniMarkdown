@@ -49,7 +49,7 @@ public class MyLogger {
         System.out.println();
         int n = logs.size();
         int i=0;//default start from 0
-        if(num>=0&&num<n)i=n-num-1;
+        if(num>=0&&num<n)i=n-num;
         for (; i < n; i++) {
             System.out.println(logs.get(i));
         }
