@@ -21,6 +21,7 @@ public class Parser {
             }
             case "insert"->{
                 if(args.size()==3)args.add(1,"-1");
+                else args.set(1,String.valueOf(Integer.parseInt(args.get(1))-1));
             }
             case "delete" -> {
                 int lineNumber;
@@ -33,6 +34,9 @@ public class Parser {
                 args.set(1,String.valueOf(lineNumber));
                 args.add("#".repeat(TextEditor.getLayer(lineNumber)));//repeat "#"
                 args.add(TextEditor.getName(lineNumber));//give index get name
+            }
+            case "history"->{
+                if(args.size()==1)args.add("-1");
             }
             default -> {}
         }

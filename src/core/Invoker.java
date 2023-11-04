@@ -7,17 +7,18 @@ import command.Command;
 public class Invoker {
     public static List<List<String>> commands = new ArrayList<>();
     public static int historyIndex = -1;
-    public static int fileID = 0;
+    public static String fileName;
 
     public static void invoke(String c){
         MyLogger.recordCommand(c);
         List<String> args=Parser.parse(c);
         switch (args.get(0)){
-            case "load"-> MyLogger.openNewFile(args.get(1),++fileID);
-            case "save"->MyLogger.closeFile();
+            case "load"->fileName=MyLogger.openNewFile(args.get(1));
+            case "save"->MyLogger.closeFile(fileName);
             case "undo"->{undo();return;}
             case "redo"->{redo();return;}
             case "insert","delete"-> commands.add(++historyIndex,args);
+            case "exit"->System.exit(0);
         }
         Parser.getCommand(args).execute();
     }

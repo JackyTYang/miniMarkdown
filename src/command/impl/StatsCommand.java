@@ -12,6 +12,6 @@ public class StatsCommand implements Command {
 
     @Override
     public void execute() {
-        MyLogger.status(parameter);
+        MyLogger.stats(parameter);
     }
 }
