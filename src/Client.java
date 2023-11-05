@@ -3,7 +3,7 @@ import core.Invoker;
 import java.util.Scanner;
 
 public class Client {
-    public static void run(String[] args) {
+    public static void run() {
         String command;
         Scanner scanner = new Scanner(System.in);
         while(true){
