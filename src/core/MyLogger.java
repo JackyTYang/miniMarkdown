@@ -78,4 +78,51 @@ public class MyLogger {
     public static void closeFile(String fileName){
         file_times.get(fileName).add(LocalDateTime.now());
     }
+
+    public static void shutdown(){
+        executor.shutdownNow();
+    }
+    public static void main(String[] args) throws InterruptedException {
+
+        // Test 1: Record some commands
+        recordCommand("Command 1 executed");
+        Thread.sleep(1000);  // Pause to simulate time delay between actions
+
+        recordCommand("Command 2 executed");
+        Thread.sleep(1000);
+
+        recordCommand("Command 3 executed");
+        Thread.sleep(1000);
+
+        // Test 2: Open a new file
+        openNewFile("File1");
+        recordCommand("Opened File1 with ID 101");
+        Thread.sleep(3000);  // Pause to simulate working with the file
+
+        // Test 3: Close the file
+        closeFile("File1");
+        recordCommand("Closed File1 with ID 101");
+        Thread.sleep(1000);
+
+        // Test 4: Open another file
+        openNewFile("File2");
+        recordCommand("Opened File2 with ID 102");
+        Thread.sleep(2000);  // Pause to simulate working with the file
+
+        // Test 5: Close the second file
+        closeFile("File2");
+        recordCommand("Closed File2 with ID 102");
+        Thread.sleep(1000);
+
+        // Test 6: Show recent history
+        System.out.println("\nRecent history:");
+        history(5);  // Display the last 5 logs
+
+        // Test 7: Show the status of all files
+        System.out.println("\nFile Status:");
+        stats("ALL");
+
+        // Shutting down the executor to ensure program termination
+        shutdown();
+    }
 }
